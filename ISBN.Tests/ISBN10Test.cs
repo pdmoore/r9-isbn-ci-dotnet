@@ -1,14 +1,13 @@
 using System;
-using System.Collections.Generic;
 using Xunit;
 
-namespace ISBN.Tests {
+namespace ISBN {
     public class ISBN10Test {
         [Fact]
         public void ISBN_ShorterThan10Characters_ReturnsInvalidBookInfo() {
             //Arrange
             String shortISBN = "12345";
-            
+
             //Act
             ISBNFinder sut = new ISBNFinder();
             BookInfo actual = sut.lookup(shortISBN);
@@ -16,18 +15,26 @@ namespace ISBN.Tests {
             //Assert
             Assert.Equal("ISBN must be 10 characters in length", actual.title);
         }
-    }
 
-    public class BookInfo {
-        public String title;
-    }
+        [Fact]
+        public void ISBN_LongerThan10Characters_ReturnsInvalidBookInfo() {
+            String longISBN = "123456789ABCEDF";
 
-    public class ISBNFinder {
-        public BookInfo lookup(string ISBN) {
-            BookInfo bookInfo = new BookInfo();
-            bookInfo.title = "ISBN must be 10 characters in length";
+            ISBNFinder sut = new ISBNFinder();
+            BookInfo actual = sut.lookup(longISBN);
             
-            return bookInfo;
+            Assert.Equal("ISBN must be 10 characters in length", actual.title);
+        }
+
+        [Fact]
+        public void ISBN_BookAvailableFromFinder() {
+            String unknownISBN = "0553562614";
+            
+            ISBNFinder sut = new ISBNFinder();
+            BookInfo actual = sut.lookup(unknownISBN);
+            
+            Assert.Equal("Title not found", actual.title);
         }
     }
+
 }
