@@ -1,4 +1,5 @@
 using System;
+using BookInfoProvider;
 using Xunit;
 
 namespace ISBN {
