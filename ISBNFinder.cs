@@ -1,12 +1,8 @@
-using System;
-using System.Runtime.CompilerServices;
-
 namespace ISBN {
     public class ISBNFinder {
         private IBookInfoProvider isbnService = null;
 
-        public ISBNFinder() {
-            isbnService = ISBNService.Instance;
+        public ISBNFinder() : this(ISBNService.Instance) {
         }
 
         public ISBNFinder(IBookInfoProvider bookInfoProvider) {
