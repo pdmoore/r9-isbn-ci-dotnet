@@ -1,8 +1,14 @@
 # r9-isbn-ci-dotnet
 
-- Single test in place to verify azure devops build
+- Some tests against ISBN10 in place to verify azure devops build
 
-- Move ISBNFinder to ISBN project
-- Move BookInfo out of Test class
-- Add fake impl of ISBNService to return BookInfo
-
+- BookInfoProvider
+  - Defines the Provider interface
+  - Has the data object BookInfoProvider
+  - Has an in-memory test double, ISBNService, that ISBNFinder can be tested against
+  
+- ISBN
+  - ISBNFinder - the System Under test
+  
+- ISBN.tests
+  - xUnit tests for the ISBNFinder class

@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
 
+/*
+ * This is an in-memory example of a BookInfoProvider.
+ * It will be used as a Test Double to permit testing of ISBNFinder behavior
+ * without having to invoke the actual remote BookInfoProvider
+ * 
+ */
+
 namespace BookInfoProvider {
     public sealed class ISBNService : IBookInfoProvider {
         private static ISBNService instance = null;

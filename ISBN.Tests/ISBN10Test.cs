@@ -45,7 +45,6 @@ namespace ISBN {
             BookInfo actual = sut.lookup(ISBN);
 
             BookInfo expected = new BookInfo("Test Driven Development by Example", "Kent Beck", "0321146530", "9780321146533");
-            
             Assert.Equal(expected.ToString(), actual.ToString());
         }
         
